@@ -1,8 +1,11 @@
 from odoo import http
+from dotenv import load_dotenv
 import requests
+import os
 
-LINE_CHANNEL_SECRET = '89e81ca6e2083978b01a166ed19437b2'
-LINE_CHANNEL_ID = '2005695415'
+load_dotenv()
+LINE_CHANNEL_SECRET = os.getenv('LINE_CHANNEL_SECRET')
+LINE_CHANNEL_ID = os.getenv('LINE_CHANNEL_ID')
 
 class LineLoginController(http.Controller):
     @http.route('/line/callback', type='http', auth='public', csrf=False)
